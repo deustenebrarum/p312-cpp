@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base.cpp">
+    <ClCompile Include="структура_функции.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="count_primes.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
