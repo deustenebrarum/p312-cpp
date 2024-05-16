@@ -93,21 +93,25 @@ void sum_prod(
 	}
 }
 
-
-
-// функция должна принимать массив
-// старый размер и желаемый новый размер
-// выдавать новый массив с теми же элементами
-// и желаемым размером
+void remove_negatives(
+	int* array,
+	size_t size
+) {
+	for (size_t i = 0; i < size; i++)
+	{
+		if (array[i] < 0) {
+			pop(array, size, i);
+			i--;
+		}
+	}
+}
 
 int main() {
-	size_t size = 5;
-	int* array1 = new int[size]{ 1,2,3,4,5 };
-	
-	array1 = reallocate(array1, 5, 10);
-	
-	pop(array1, size, 3);
-	size = 4;
+	int* array = new int[5] {1, 2, 3, 4, 5};
 
-	print(array1, size);
+	const int ins[3]{ 7, 8, 9 };
+
+	insert(array, 5, ins, 3, 2);
+
+	print(array, 8);
 }

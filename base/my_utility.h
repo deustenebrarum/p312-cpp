@@ -183,3 +183,66 @@ void pop(int* array, size_t size, size_t index) {
 		array[i] = array[i + 1];
 	}
 }
+
+void insert(
+	int*& array,
+	size_t size,
+	int element,
+	size_t index
+) {
+	array = reallocate(array, size, size + 1);
+
+	for (size_t i = size; i > index; i--)
+	{
+		array[i] = array[i - 1];
+	}
+	array[index] = element;
+}
+
+void insert(
+	int*& array,
+	size_t size,
+	const int* another,
+	size_t another_size,
+	size_t index
+) {
+	for (size_t i = 0; i < another_size; i++)
+	{
+		insert(
+			array, size + i,
+			another[i], index + i
+		);
+	}
+}
+
+void append(
+	int*& array,
+	size_t size,
+	int element
+) {
+	insert(array, size, element, size);
+}
+
+void append(
+	int*& array,
+	size_t size,
+	const int* another,
+	size_t another_size
+) {
+	for (size_t i = 0; i < another_size; i++)
+	{
+		append(array, size, another[i]);
+	}
+}
+
+void remove(
+	int* array,
+	size_t size,
+	size_t from,
+	size_t to
+) {
+	for (size_t i = from; i < to; i++)
+	{
+		pop(array, size, from);
+	}
+}
