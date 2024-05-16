@@ -156,18 +156,30 @@ int* concat(
 	return array_res;
 }
 
-void reallocate(
-	int*& array,
-	size_t size, size_t new_size
+int* reallocate(
+	int* array,
+	size_t old_size,
+	size_t new_size
 ) {
 	int* new_array = new int[new_size];
+	
 	const size_t min_size = std::min(
-		size, new_size
+		old_size, new_size
 	);
+
 	for (size_t i = 0; i < min_size; i++)
 	{
 		new_array[i] = array[i];
 	}
+
 	delete[] array;
-	array = new_array;
+
+	return new_array;
+}
+
+void pop(int* array, size_t size, size_t index) {
+	for (size_t i = index; i < size - 1; i++)
+	{
+		array[i] = array[i + 1];
+	}
 }

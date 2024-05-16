@@ -61,9 +61,7 @@ int* find(
 	const int* sub_array,
 	size_t sub_size
 ) {
-	int* found_sequence = nullptr;
-
-	for (size_t i = 0; i < size - sub_size; i++)
+	for (size_t i = 0; i < size - sub_size + 1; i++)
 	{
 		bool is_subsequence = true;
 		for (size_t j = 0; j < sub_size; j++)
@@ -74,12 +72,11 @@ int* find(
 			}
 		}
 		if (is_subsequence) {
-			found_sequence = array + i;
-			break;
+			return array + i;
 		}
 	}
 
-	return found_sequence;
+	return nullptr;
 }
 
 void sum_prod(
@@ -96,15 +93,21 @@ void sum_prod(
 	}
 }
 
+
+
+// функция должна принимать массив
+// старый размер и желаемый новый размер
+// выдавать новый массив с теми же элементами
+// и желаемым размером
+
 int main() {
-	int* array1 = new int[5]{ 1,2,3,4,5 };
-	print(array1, 5);
+	size_t size = 5;
+	int* array1 = new int[size]{ 1,2,3,4,5 };
+	
+	array1 = reallocate(array1, 5, 10);
+	
+	pop(array1, size, 3);
+	size = 4;
 
-	for (size_t i = 0; i < 100000000; i++)
-	{
-		reallocate(array1, 5, 3);
-
-	}
-
-	print(array1, 3);
+	print(array1, size);
 }
