@@ -246,3 +246,21 @@ void remove(
 		pop(array, size, from);
 	}
 }
+
+int* filter(
+	bool (*predicate)(int),
+	const int* array,
+	const size_t size
+) {
+	int* result = new int[size] {};
+	size_t count = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (predicate(array[i])) {
+			result[count] = array[i];
+			count++;
+		}
+	}
+
+	return result;
+}
